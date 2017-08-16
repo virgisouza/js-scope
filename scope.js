@@ -3,10 +3,14 @@ var isCookieJarOpen = null;
 
 function closeLid() {
   /* answer here */
+  isCookieJarOpen = false;
+  return isCookieJarOpen;
 }
 
 function openLid() {
   /* answer here */
+  isCookieJarOpen = true;
+  return isCookieJarOpen;
 }
 
 
@@ -17,7 +21,7 @@ function outerFunction() {
 
   function innerFunction() {
     var world = 'World';
-    return /* answer here */;
+    return hello + " " + world;
   }
   return innerFunction();
 }
@@ -31,8 +35,8 @@ function addMatrixElements(matrix) {
 
   for(var i = 0; i < matrix.length; i++) {
     /* fix counter variables in the second loop */
-    for(var i = 0; i < matrix[i].length; i++) {
-      result = result + matrix[i][i];
+    for(var j = 0; j < matrix[i].length; j++) {
+      result = result + matrix[i][j];
     }
   }
   return result;
@@ -41,26 +45,36 @@ function addMatrixElements(matrix) {
 
 // This function is returning the wrong userObject data. It should be returning
 // Neo's information and not Morpheus'.  Fix it!
+
 function sendDataToClient() {
 
-  var userObject = {
-    handle: 'neo',
-    authenticated: false
-  }
-
-  function authenticateUser(obj, username) {
+  
     var userObject = {
       handle: 'morpheus',
       authenticated: false
     };
+  //console.log(userObject)
+
+  function authenticateUser(obj, username) {
+    var userObject = {
+    handle: 'neo',
+    authenticated: false
+    };
+    //console.log(userObject)
 
     if (userObject.handle === username) {
       userObject.authenticated = true;
       return userObject
+      
     } else {
       return userObject
+   
     }
   }
-  authenticateUser(userObject, 'neo')
-  return userObject
+
+  
+return authenticateUser(userObject, 'neo');
+  
 }
+
+console.log(sendDataToClient());
